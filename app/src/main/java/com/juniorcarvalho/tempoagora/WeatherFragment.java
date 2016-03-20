@@ -24,7 +24,7 @@ public class WeatherFragment extends Fragment {
     TextView cityField;
     TextView updatedField;
     TextView detailsField;
-  //  TextView detalhesVendoNuvens;
+  // TextView detalhesVendoNuvens;
     TextView currentTemperatureField;
     TextView weatherIcon;
     TextView tempmin;
@@ -47,7 +47,7 @@ public class WeatherFragment extends Fragment {
         updatedField = (TextView) rootView.findViewById(R.id.updated_field);
         detailsField = (TextView) rootView.findViewById(R.id.details_field);
 
-      //  detalhesVendoNuvens = (TextView) rootView.findViewById(R.id.detalhesVentoNuvens);
+     //  detalhesVendoNuvens = (TextView) rootView.findViewById(R.id.detalhesVentoNuvens);
 
         currentTemperatureField = (TextView) rootView.findViewById(R.id.current_temperature_field);
         weatherIcon = (TextView) rootView.findViewById(R.id.weather_icon);
@@ -108,19 +108,17 @@ public class WeatherFragment extends Fragment {
             JSONObject vento = json.getJSONObject("wind");
             JSONObject nuvens = json.getJSONObject("clouds");
             //
-            //     detalhesVendoNuvens.setText(json.getJSONObject("rain").getString("3h"));
+      //          detalhesVendoNuvens.setText(json.getJSONObject("rain").getString("3h"));
 
 
 
-/*            detalhesVendoNuvens.setText(
-                    details.getString("description").toUpperCase(Locale.US) +
-                            "\n" + "Vento: " + vento.getString("speed") + " Km/H " + vento.getString("deg") + "º" +
-                             "\n" + "Nuven: " + nuvens.getString("all") + " "
-                                       );*/
+            detailsField.setText(
+                    String.format("%s\nVento: %s Km/H %sº\nNuven: %s ", details.getString("description").toUpperCase(Locale.US), vento.getString("speed"), vento.getString("deg"), nuvens.getString("all"))
+                                       );
 
 
             currentTemperatureField.setText(String.format("%.2f", main.getDouble("temp")) + " ℃");
-            detailsField.setText(
+         /*   detailsField.setText(
                     details.getString("description").toUpperCase(Locale.US) +
                             "\n" + "Umidade : " + main.getString("humidity") + "%" +
                             "\n" + "Pressão  : " + main.getString("pressure") + " hPa" +
@@ -128,7 +126,32 @@ public class WeatherFragment extends Fragment {
                             "\n" + "Máxima  : " + main.getString("temp_max") + " ℃" +
                             "\n" + "Vento      : " + vento.getString("speed") + " Km/H " + vento.getDouble("deg") + "º" +
                             "\n" + "Nuven     : " + nuvens.getString("all") + " %"
+            );*/
+
+
+ /*              detailsField.setText(
+                       String.format("%s\nUmidade : %s%%\nPressão  : %s hPa\nMínima   : %s ℃\nMáxima  : %s ℃\nVento      : %s Km/H %sº\nNuven     : %s %%", details.getString("description").toUpperCase(Locale.US), main.getString("humidity"), main.getString("pressure"), main.getString("temp_min"), main.getString("temp_max"), vento.getString("speed"), vento.getDouble("deg"), nuvens.getString("all"))
+               );
+            */
+            detailsField.setText(
+                    new StringBuilder().append(details.getString("description").toUpperCase(Locale.US)).
+                            append("\n").
+                            append("Umidade : ").append(main.getString("humidity")).append("%").
+                            append("\n").
+                            append("Pressão  : ").append(main.getString("pressure")).append(" hPa").
+                            append("\n").
+                            append("Mínima   : ").append(main.getString("temp_min")).append(" ℃").
+                            append("\n").
+                            append("Máxima  : ").append(main.getString("temp_max")).append(" ℃").
+                            append("\n").
+                            append("Vento      : ").append(vento.getString("speed")).append(" Km/H ").
+                            append(vento.getDouble("deg")).append("º").
+                            append("\n").
+                            append("Nuven     : ").
+                            append(nuvens.getString("all")).append(" %").toString()
             );
+
+
 
 
 
