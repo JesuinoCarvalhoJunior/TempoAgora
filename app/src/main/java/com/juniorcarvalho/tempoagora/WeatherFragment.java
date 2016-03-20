@@ -110,12 +110,9 @@ public class WeatherFragment extends Fragment {
             //
       //          detalhesVendoNuvens.setText(json.getJSONObject("rain").getString("3h"));
 
-
-
             detailsField.setText(
                     String.format("%s\nVento: %s Km/H %sº\nNuven: %s ", details.getString("description").toUpperCase(Locale.US), vento.getString("speed"), vento.getString("deg"), nuvens.getString("all"))
-                                       );
-
+                                     );
 
             currentTemperatureField.setText(String.format("%.2f", main.getDouble("temp")) + " ℃");
          /*   detailsField.setText(
