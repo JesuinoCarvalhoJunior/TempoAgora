@@ -122,8 +122,9 @@ public class WeatherFragment extends Fragment {
             currentTemperatureField.setText(String.format("%.2f", main.getDouble("temp")) + " ℃");
             detailsField.setText(
                     details.getString("description").toUpperCase(Locale.US) +
-                            "\n" + "Umidade : " + main.getString("humidity") + " %" +
-                            "\n" + "Pressão  : " + main.getString("temp_min") + " ℃" +
+                            "\n" + "Umidade : " + main.getString("humidity") + "%" +
+                            "\n" + "Pressão  : " + main.getString("pressure") + " hPa" +
+                            "\n" + "Minima   : " + main.getString("temp_min") + " ℃" +
                             "\n" + "Máxima  : " + main.getString("temp_max") + " ℃" +
                             "\n" + "Vento      : " + vento.getString("speed") + " Km/H " + vento.getDouble("deg") + "º" +
                             "\n" + "Nuven     : " + nuvens.getString("all") + " %"
